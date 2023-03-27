@@ -36,17 +36,6 @@ export class UserService {
         return getAllUsers;
     }
 
-    // async findOne(id: string): Promise<User> {
-    //     const validId = mongoose.Types.ObjectId.isValid(id);
-    //     if (!validId) {
-    //         throw new NotFoundException('Enter valid Id');
-    //     }
-    //     const findById = await this.userModel.findById(id);
-    //     if (!findById) {
-    //         throw new NotFoundException('User not found');
-    //     }
-    //     return findById;
-    // }
 
     async create(user: User): Promise<{ token: string}> {
         const { name, age, password } = user;
