@@ -3,12 +3,10 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User } from './schemas/user.schema';
 import * as mongoose from 'mongoose';
 import { NotFoundException } from '@nestjs/common/exceptions';
-import { createUserDto } from './dto/user.dto';
 import { Query } from 'express-serve-static-core';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { loginDto } from './dto/login.dto';
-import { UserAddress } from 'src/user-address/schemas/user-address.schema';
 
 
 @Injectable()
@@ -79,11 +77,6 @@ export class UserService {
         if (!user) {
             throw new NotFoundException('User not found');
         }
-
-        // const ispasswordMatch = await bcrypt.compare(password, user.password);
-        // if (!ispasswordMatch) {
-        //     throw new NotFoundException('Password is wrong');
-        // }
 
         const token = this.jwtService.sign({ id: user._id });
 

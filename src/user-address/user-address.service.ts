@@ -27,7 +27,7 @@ export class UserAddressService {
     }
 
     async create(userAddress: UserAddress, user: User): Promise<UserAddress> {
-        const data = Object.assign(userAddress, { user: user._id });
+        const data = Object.assign(userAddress, { user: user._id, createdAt: new Date(), updatedAt: new Date(), userAge: user.age });
         const newUserAddress = await this.userAddressModule.create(data);
         return newUserAddress;
     }
